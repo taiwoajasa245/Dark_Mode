@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<style>
+*{
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+body{ 
+  height: 100vh; 
+  background: #fff; 
+  color: #111; 
+  
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center ; 
+  transition: all .6s ease-in-out;
+  
+  
+}
+.wrapper{
+  width: 7.5em; 
+  height: 50px; 
+  border: 2px solid black; 
+  border-radius: 30px; 
+  display: flex; 
+  background:  #80ff80;
+  align-items: center; 
+  overflow-x: hidden;
+}
+.check {
+  width: 2.5em; 
+  height: 2.5em;
+  border-radius: 50%;
+  background: black;
+  margin-left: 6px; 
+  display: grid;
+  place-items: center;
+ transition: all .6s ease-in-out;
+ cursor: pointer; 
+}
+.checked{ 
+  transform: translateX(65px);
+  /* background: #fff ; */
+  display: grid; 
+  place-content: center; 
+  
+}
+.check.checked  p {
+  
+  color: #33ff77;
+  transition: .6s;
+}
+  
+  
+</style>
+<body>
+  <h1 class="toggle">
+    Light
+  </h1>
+  <div class="wrapper">
+    <div class="check"></div>
+  </div>
+  <h1 class="toggle">
+    Dark
+  </h1>
+</body>
+<script>
+
+const checkBox = document.querySelector('.check');
+console.log(checkBox);
+const wrapper = document.querySelector('.wrapper');
+const header = document.querySelectorAll('.toggle')
+checkBox.addEventListener('click', (e) => {
+  let isChecked = false;
+  if(!isChecked){
+    checkBox.classList.toggle('checked');
+   
+    isChecked = true;
+    document.body.style.background = '#fff';
+    document.body.style.color = '#111';
+    wrapper.style.border = '2px solid #111';
+    for ( x of header){
+      x.style.color = '#111';
+    };
+    
+    
+    if(e.target.classList.contains('checked')){
+    
+     document.body.style.background = '#111';
+     document.body.style.color = '#fff';
+     wrapper.style.border = '2px solid #33ff77';
+     
+     let i = 0; 
+     while(i < header.length){
+       header[i].style.color = '#33ff77';
+       
+       i++
+     }
+     
+    };
+  };
+  
+});
+  
+</script>
+</html>
